@@ -1,0 +1,43 @@
+<% include partials/header %>
+<h1>
+    Add a person
+</h1>
+<% if(errors){%>
+<ul>
+    <%errors.forEach(function(error){ %>
+    <li>
+        <%= error.msg %>
+    </li>
+    <%
+    });
+    %>
+</ul>
+
+<%}%>
+<form method="POST" action="persons/add">
+    <label for="">person id</label>
+    <br>
+    <input type="text" name="person_id">
+    <br>
+    <label for="">person name</label>
+    <br>
+    <input type="text" name="person_name">
+    <br>
+    <input type="submit" value="Submit It">
+
+
+</form>
+<h1><%= title %></h1>
+<ul>
+    <%
+    persons.forEach(function(person){ %>
+    <li>
+        <%= person.name %>
+        <a href="#" class="deletePerson" data-person_id="<%=person.person_id%>">Delete</a>
+    </li>
+    <%
+    });
+    %>
+
+</ul>
+<% include partials/footer %>
